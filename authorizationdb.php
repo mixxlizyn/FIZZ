@@ -11,7 +11,7 @@ if (count($user) == 0) {
     echo "Такой пользователь не найден";
     exit();
 } else {
-    $_SESSION["user_id"] = $user["user_id"];
+    $_SESSION["id"] = $user["id"];
 
     header('Location: acc.php');
 }
