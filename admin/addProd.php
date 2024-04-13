@@ -2,6 +2,9 @@
 include "../connect.php";
 include "modal.php";
 
+$query = "SELECT * from  Category ";
+$categories = mysqli_fetch_all(mysqli_query($con, $query));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,29 +30,31 @@ include "modal.php";
 
 
     </div>
-    <form action="" method="get">
-        <div class="form-group">
-            <label for="name">Имя:</label>
-            <input type="text" id="title" name="title" required />
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" id="price" name="price" required />
-        </div>
-        <div class="form-group">
-            <label for="phone">Телефон:</label>
-            <textarea id="description" name="description" required"></textarea>
-        </div>
-        <div class="form-group">
-            <label for="message">Сообщение:</label>
-            <input type="text" id="category" name="category" required></ш>
-        </div>
-        <div class="form-group">
-            <label for="message">Сообщение:</label>
-            <input type="file" id="image" name="image" required></ш>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Добавить товар" />
+    <form action="addProddb.php" method="POST">
+        <label for="name">Имя:</label>
+        <input type="text" id="title" name="title" required />
+
+        <label for="email">Цена:</label>
+        <input type="text" id="price" name="price" required />
+
+        <label for="phone">Описание:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="userCategory">Выберите категорию:</label>
+        <select id="userCategory" name="category" selected='<?= $id_new ? $new_info["name"] : "" ?>'>
+            <?php
+            foreach ($categories as $category) {
+                $id_cat = $category[0];
+                $name = $category[1];
+                echo "<option value='$id_cat'" . $id_new . ">$name</option>";
+            }
+            ?>
+        </select>
+
+        <label for="message">Фото:</label>
+        <input type="file" id="image" name="image" required />
+
+        <input type="submit" value="Добавить товар" />
         </div>
     </form>
 

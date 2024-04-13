@@ -3,92 +3,77 @@
 include ("connect.php");
 require ("header.php");
 
-?>
 
+$query = "SELECT * from Products INNER JOIN Category on Products.id_cat=Category.id_cat";
+$product = mysqli_fetch_all(mysqli_query($con, $query));
+
+
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css\style.css">
     <title>Document</title>
 </head>
 
 <body>
-
-
     <main>
         <section class="header-fizz">
 
             <div class="text-header">
-                <img src="images\Group 8197.png" alt="fizz" class="back-img">
-                <h1>ENJOY
+                <img src="images\Group8197.png" class="back-img" alt="">
+                <h1>ENJOY <br>
                     EVERY SIP</h1>
             </div>
             <div class="img-drink">
                 <img src="images\Group 8179.png" alt="drink">
+
             </div>
+
         </section>
+
+
         <div class="swipe">
-            <p>The ultimate refreshing drink
+            <p class="text-descr">The ultimate refreshing drink <br>
                 to enjoy in every festival</p>
-            <img src="images\Group 8196.png" alt="">
+            <img src="images\Group 8196.png" alt="" class="img-swipe">
         </div>
-        <section>
+        <section class="catalog">
             <h2 id="menu-header">Меню</h2>
 
+            <div class="container">
+                <div class="categories">
+                    <a href="#" class="category">Одежда</a>
+                    <a href="#" class="category">Обувь</a>
+                    <a href="#" class="category">Аксессуары</a>
+                </div>
+            </div>
             <div class="menu">
-                <div class="row">
-                    <div class="product">
-                        <img src="" alt="Изображение позиции">
-                        <h3>Название</h3>
-                        <h4>Цена</h4>
-                        <button>+</button>
-                    </div>
+                <?php
+                foreach ($product as $prod) {
 
-                    <div class="product">
-                        <img src="" alt="Изображение позиции">
-                        <h3>Название</h3>
-                        <h4>Цена</h4>
-                        <button>+</button>
-                    </div>
+                    echo "<div class='product'>";
 
-                    <div class="product">
-                        <img src="" alt="Изображение позиции">
-                        <h3>Название</h3>
-                        <h4>Цена</h4>
-                        <button>+</button>
-                    </div>
-                </div>
+                    $prod_id = $prod['0'];
 
-                <div class="row">
-                    <div class="product">
-                        <img src="" alt="Изображение позиции">
-                        <h3>Название</h3>
-                        <h4>Цена</h4>
-                        <button>+</button>
-                    </div>
+                    echo "<img  src='images/" . $prod[5] . "' id='img'>";
+                    echo "<a href='oneNew.php?new=$prod_id'>" . $prod[1] . "</a>";
+                    echo "<p>Дата публикации " . $new['publish_date'] . "</p>";
+                    echo "</div>";
 
-                    <div class="product">
-                        <img src="" alt="Изображение позиции">
-                        <h3>Название</h3>
-                        <h4>Цена</h4>
-                        <button>+</button>
-                    </div>
+                }
 
-                    <div class="product">
-                        <img src="" alt="Изображение позиции">
-                        <h3>Название</h3>
-                        <h4>Цена</h4>
-                        <button>+</button>
-                    </div>
-                </div>
-
+                ?>
             </div>
         </section>
     </main>
