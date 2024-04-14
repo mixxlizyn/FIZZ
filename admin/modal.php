@@ -9,7 +9,7 @@ $userEmail = isset($_SESSION["id"]) ? mysqli_fetch_assoc(mysqli_query($con, 'sel
     <a href="#">Личный кабинет</a>
     <a href="addProd.php">Товары</a>
     <a href="#">Заказы</a>
-    <a href="#">Категории</a>
+    <a href="addCat.php">Категории</a>
     <a href="#">Отчеты</a>
 
 

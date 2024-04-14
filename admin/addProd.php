@@ -31,16 +31,16 @@ $categories = mysqli_fetch_all(mysqli_query($con, $query));
 
     </div>
     <form action="addProddb.php" method="POST">
-        <label for="name">Имя:</label>
+        <label for="title">Имя:</label>
         <input type="text" id="title" name="title" required />
 
-        <label for="email">Цена:</label>
+        <label for="price">Цена:</label>
         <input type="text" id="price" name="price" required />
 
-        <label for="phone">Описание:</label>
+        <label for="description">Описание:</label>
         <textarea id="description" name="description" required></textarea>
 
-        <label for="userCategory">Выберите категорию:</label>
+        <label for="category">Выберите категорию:</label>
         <select id="userCategory" name="category" selected='<?= $id_new ? $new_info["name"] : "" ?>'>
             <?php
             foreach ($categories as $category) {
@@ -51,7 +51,7 @@ $categories = mysqli_fetch_all(mysqli_query($con, $query));
             ?>
         </select>
 
-        <label for="message">Фото:</label>
+        <label for="image">Фото:</label>
         <input type="file" id="image" name="image" required />
 
         <input type="submit" value="Добавить товар" />
