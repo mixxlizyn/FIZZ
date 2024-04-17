@@ -12,7 +12,7 @@ $Images = isset($_FILES["image"]["tmp_name"]) ? $_FILES["image"] : false;
 if ($Price && $Title && $Descr && $Category) {
 
     $file_name = $Images["name"];
-    move_uploaded_file($userImages["tmp_name"], "../images/$file_name");
+    move_uploaded_file($Images["tmp_name"], "../images/$file_name");
 
 
     $result = mysqli_query($con, "INSERT INTO `Products`(`name`, `descr`, `id_cat`, `price`, `image`) VALUES ('$Title','$Descr','$Category','$Price','$file_name')");

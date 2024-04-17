@@ -30,7 +30,7 @@ $categories = mysqli_fetch_all(mysqli_query($con, $query));
 
 
     </div>
-    <form action="addProddb.php" method="POST">
+    <form action="addProddb.php" method="POST" enctype="multipart/form-data">
         <label for="title">Имя:</label>
         <input type="text" id="title" name="title" required />
 
@@ -52,7 +52,8 @@ $categories = mysqli_fetch_all(mysqli_query($con, $query));
         </select>
 
         <label for="image">Фото:</label>
-        <input type="file" id="image" name="image" required />
+        <input type="file" id="image" name="image" required accept="images/*" />
+
 
         <input type="submit" value="Добавить товар" />
         </div>

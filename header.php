@@ -18,7 +18,7 @@ $email = isset($_SESSION["id"]) ? mysqli_fetch_assoc(mysqli_query($con, 'select 
 <body>
     <nav>
         <a href="">Корзина</a>
-        <a href="#">меню</a>
+        <a href="#catalog">Каталог</a>
         <?php if ($email) { ?>
             <a href="acc.php">
                 <?= $email ?>

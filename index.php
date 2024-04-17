@@ -6,6 +6,17 @@ require ("header.php");
 
 $query = "SELECT * from Products INNER JOIN Category on Products.id_cat=Category.id_cat";
 $product = mysqli_fetch_all(mysqli_query($con, $query));
+$query_cat = "SELECT * from  Category ";
+$categories = mysqli_fetch_all(mysqli_query($con, $query_cat));
+$cat = isset($_GET['cat']) ? $_GET['cat'] : false;
+
+if ($cat) {
+
+    $query = "SELECT * from Products INNER JOIN Category on Products.id_cat=Category.id_cat WHERE id_cat=$cat";
+
+
+}
+
 
 
 ?>
@@ -23,7 +34,36 @@ $product = mysqli_fetch_all(mysqli_query($con, $query));
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css\style.css">
-    <title>Document</title>
+    <title>Главная</title>
+    <style>
+        .product-card {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .product-name {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .product-price {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        .product-category {
+            margin-top: 5px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
@@ -48,27 +88,34 @@ $product = mysqli_fetch_all(mysqli_query($con, $query));
                 to enjoy in every festival</p>
             <img src="images\Group 8196.png" alt="" class="img-swipe">
         </div>
-        <section class="catalog">
+        <section class="catalog" id="catalog">
             <h2 id="menu-header">Меню</h2>
 
             <div class="container">
                 <div class="categories">
-                    <a href="#" class="category">Одежда</a>
-                    <a href="#" class="category">Обувь</a>
-                    <a href="#" class="category">Аксессуары</a>
+                    <?
+
+                    foreach ($categories as $cat) {
+                        echo "<li> <a href='index.php?cat=$cat[0]' class='category'>$cat[1]</a></li>";
+
+                    }
+                    ?>
                 </div>
             </div>
             <div class="menu">
                 <?php
                 foreach ($product as $prod) {
 
-                    echo "<div class='product'>";
+                    echo "<div class='product-card'>";
 
                     $prod_id = $prod['0'];
 
-                    echo "<img  src='images/" . $prod[5] . "' id='img'>";
-                    echo "<a href='oneNew.php?new=$prod_id'>" . $prod[1] . "</a>";
-                    echo "<p>Дата публикации " . $new['publish_date'] . "</p>";
+                    echo "<img  src='images/" . $prod[5] . "' class='product-image'>";
+                    echo "<a href='oneNew.php?new=$prod_id' class='product-name'>" . $prod[1] . "</a>";
+                    echo "<p class='product-price'>" . $prod[4] . "</p>";
+                    echo "<p class='product-category'>" . $prod[7] . "</p>";
+
+
                     echo "</div>";
 
                 }

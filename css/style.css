@@ -202,3 +202,30 @@ h1{
 .category:hover {
     background-color: #e0e0e0;
 }
+.product-card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .product-image {
+    width: 100%;
+    max-width: 250px;
+  }
+  
+  .product-name {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  
+  .product-price {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  
+  .product-category {
+    margin-top: 5px;
+    font-size: 16px;
+  }

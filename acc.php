@@ -21,6 +21,7 @@ $userEmail = isset($_SESSION["id"]) ? mysqli_fetch_assoc(mysqli_query($con, 'sel
     <p>Привет,
         <?= $userEmail ?>
     </p>
+    
 </body>
 
 </html>
