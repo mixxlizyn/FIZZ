@@ -11,24 +11,24 @@ if ($new) {
 
 
 
-    if ($email) {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['comment'])) {
-            $comment = mysqli_real_escape_string($con, $_POST['comment']);
-            $product_id = $new;
+    // if ($email) {
+    //     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['comment'])) {
+    //         $comment = mysqli_real_escape_string($con, $_POST['comment']);
+    //         $product_id = $new;
 
-            $id_user = $_SESSION["id"];
-            $query = "INSERT INTO `comments`( `id_prod`, `user_id`, `comment_text`) VALUES ('$new','$id_user', '$comment')";
-            mysqli_query($con, $query);
-        }
+    //         $id_user = $_SESSION["id"];
+    //         $query = "INSERT INTO `comments`( `id_prod`, `user_id`, `comment_text`) VALUES ('$new','$id_user', '$comment')";
+    //         mysqli_query($con, $query);
+    //     }
 
 
-    }
+    // }
 
     // Handle form submission
 
     // // Fetch comments
-    $query_comments = "SELECT * FROM comments WHERE id_prod='$new' ORDER BY comment_date DESC";
-    $comments = mysqli_fetch_all(mysqli_query($con, $query_comments), MYSQLI_ASSOC);
+    // $query_comments = "SELECT * FROM comments WHERE id_prod='$new' ORDER BY comment_date DESC";
+    // $comments = mysqli_fetch_all(mysqli_query($con, $query_comments), MYSQLI_ASSOC);
 }
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ if ($new) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>
         <?php echo $product['product_name']; ?>
     </title>
@@ -177,16 +177,18 @@ if ($new) {
 
     <div class="comments">
         <h3>отзывы</h3>
-        <?php if ($comments) {
-            foreach ($comments as $comment) {
-                echo "<div class='comment'>";
-                echo "<p>" . $comment['comment_text'] . "</p>";
-                echo "<time>" . $comment['comment_date'] . "</time>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p>Нет отзывов.</p>";
-        } ?>
+        <?php
+        // if ($comments) {
+        //     foreach ($comments as $comment) {
+        //         echo "<div class='comment'>";
+        //         echo "<p>" . $comment['comment_text'] . "</p>";
+        //         echo "<time>" . $comment['comment_date'] . "</time>";
+        //         echo "</div>";
+        //     }
+        // } else {
+        //     echo "<p>Нет отзывов.</p>";
+        // }
+        ?>
     </div>
 
     <!-- Display Comments -->

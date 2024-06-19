@@ -225,9 +225,6 @@ h1{
     transition: transform 0.3s;
 }
 
-.product-card:hover .product-image {
-    transform: scale(1.1);
-}
 
 .product-name {
     margin-top: 10px;
