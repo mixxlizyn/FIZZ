@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_order'])) {
     $query = "DELETE FROM Orders WHERE id = $order_id";
     mysqli_query($con, $query);
 
-    header("Location: admin");
+    header("Location: admin.php");
     exit();
 }
 ?>

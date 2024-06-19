@@ -44,6 +44,11 @@ $user = mysqli_fetch_assoc($user_result);
     <link rel="stylesheet" href="css/style.css">
     <title>Корзина</title>
     <style>
+        body {
+            background-color: #3a5145;
+
+        }
+
         .cart-container {
             max-width: 800px;
             margin: 50px auto;

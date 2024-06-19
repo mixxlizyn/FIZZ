@@ -53,11 +53,20 @@ if (count($products) > 0) {
 
     // Начисление новых бонусов (5% от итоговой суммы)
     $acc_bonus = $total_price * 0.05;
+    $status_history = json_encode([['status' => 'none', 'changed_at' => date('Y-m-d H:i:s')]]);
 
     // Вставка заказа в базу данных
-    $query_order = "INSERT INTO Orders (id_user, `status`, Total_cost, Used_bonus, Acc_bonus) VALUES ($user_id, 'оформлен', $total_price, $used_bonus, $acc_bonus)";
+    $query_order = "INSERT INTO Orders (id_user, `status`, Total_cost, Used_bonus, Acc_bonus, `status_history`) VALUES ($user_id, 'оформлен', $total_price, $used_bonus, $acc_bonus, '$status_history')";
     mysqli_query($con, $query_order);
     $order_id = mysqli_insert_id($con);
+
+    // $status_history[] = ['status' => 'готовим', 'changed_at' => date('Y-m-d H:i:s')];
+
+
+    // // Вставка заказа в базу данных
+    // $query_order = "INSERT INTO Orders (id_user, `status`, Total_cost, Used_bonus, Acc_bonus, `status_history`) VALUES ($user_id, 'оформлен', $total_price, $used_bonus, $acc_bonus, $status_history )";
+    // mysqli_query($con, $query_order);
+    // $order_id = mysqli_insert_id($con);
 
     // Вставка товаров заказа в базу данных
     foreach ($products as $product) {
