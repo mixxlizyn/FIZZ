@@ -41,14 +41,76 @@ foreach ($orders as $order) {
     <title>История заказов</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #3a5145;
+
+        color: #333;
+    }
+
+    .user-info {
+        background-color: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .user-info p {
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    h2 {
+        color: #444;
+    }
+
+    .order {
+        background-color: #fff;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+
+    .order h3 {
+        margin-top: 0;
+    }
+
+    .order p {
+        margin: 5px 0;
+    }
+
+    .order ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 10px 0 0 0;
+    }
+
+    .order ul li {
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .order ul li:last-child {
+        margin-bottom: 0;
+    }
+</style>
 
 <body>
-    <p>Привет,
-        <?= htmlspecialchars($user['email']) ?>
-    </p>
-    <p>Ваши бонусы:
-        <?= htmlspecialchars($user['bonus']) ?>
-    </p>
+    <div class="user-info">
+        <p>Привет,
+            <?= htmlspecialchars($user['email']) ?>
+        </p>
+        <p>Ваши бонусы:
+            <?= htmlspecialchars($user['bonus']) ?>
+        </p>
+    </div>
 
     <h2>История заказов</h2>
     <?php if (count($orders) > 0): ?>
