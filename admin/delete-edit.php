@@ -17,12 +17,11 @@ if ($delete) {
     }
 }
 
-if ($name) {
-    $query = mysqli_query($con, "UPDATE `Category` SET `name`='$name' WHERE id_cat = $cat_id");
+if ($edit) {
+    $query = mysqli_query($con, "UPDATE `Category` SET `cat_name`='$name' WHERE id_cat = $cat_id");
     if ($query) {
         echo "<script>alert(\"Категория успешно обновлена\"); location.href='addCat.php'</script>";
     } else {
         echo "<script>alert(\"Ошибка при обновлении категории\"); location.href='addCat.php'</script>";
     }
 }
-?>

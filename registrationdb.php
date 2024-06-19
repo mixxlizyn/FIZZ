@@ -15,7 +15,7 @@ if (!empty($user1)) {
 $result2 = mysqli_query($con, "SELECT * FROM `Users` WHERE `email` = '$email'");
 $user1 = mysqli_fetch_assoc($result2); // Конвертируем в массив
 if (!empty($user1)) {
-    echo "Данный логин уже используется!";
+    echo "Данная почта уже используется!";
     exit();
 }
 mysqli_query($con, "INSERT INTO `users` ( `password`, `email`)VALUES('$pass', '$email')");

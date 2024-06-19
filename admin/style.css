@@ -46,8 +46,8 @@ body {
 button {
 
     background: none;
-    border: none;
-}
+    border: none;}
+/* }
 form {
     display: flex;
     flex-direction: column;
@@ -105,4 +105,3 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
- 
