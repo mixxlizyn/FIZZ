@@ -28,6 +28,13 @@ if ($basket) {
 } else {
     $products = [];
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_cart'])) {
+    $query_clear = "DELETE FROM Basket WHERE id_user = $user_id";
+    mysqli_query($con, $query_clear);
+    header("Location: cart.php");
+    exit();
+}
+
 
 $query_user = "SELECT * FROM Users WHERE id = $user_id";
 $user_result = mysqli_query($con, $query_user);
@@ -153,6 +160,10 @@ $user = mysqli_fetch_assoc($user_result);
                 </label>
                 <input type="checkbox" id="use_bonus" name="use_bonus" value="yes">
                 <button type="submit" class="checkout-button">Оформить заказ</button>
+            </form>
+            <form action="cart.php" method="POST">
+                <input type="hidden" name="clear_cart" value="true">
+                <button type="submit" class="clear-cart-button">Очистить корзину</button>
             </form>
         <?php } else { ?>
             <p>Ваша корзина пуста.</p>
