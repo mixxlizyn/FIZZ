@@ -44,7 +44,7 @@ foreach ($orders as $order) {
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 20px;
+        margin: 0 20px;
         background-color: #3a5145;
 
         color: #333;
